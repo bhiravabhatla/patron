@@ -13,6 +13,11 @@ cover: fmtcheck
 	go tool cover -func=coverage.txt && \
 	rm coverage.txt
 
+coveragecheck: fmtcheck
+	go test ./... -coverpkg=./... -coverprofile=coverage.txt -tags=integration -covermode=atomic > /dev/null && \
+    go tool cover -func=coverage.txt -o package_coverage.txt && \
+	$(CURDIR)/script/gocvgcheck.sh
+	rm coverage.txt package_coverage.txt
 coverci: fmtcheck
 	go test ./... -race -cover -mod=vendor -coverprofile=coverage.txt -covermode=atomic -tags=integration 
 
