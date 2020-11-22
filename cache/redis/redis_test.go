@@ -9,18 +9,12 @@ import (
 )
 
 func TestNew(t *testing.T) {
-	cache, err := New(context.WithValue(context.Background(), "test", "val"), Options{Addr: "localhost:6379"})
+	cache, err := New(context.Background(), Options{Addr: "localhost:6379"})
 	assert.NoError(t, err)
 	assert.NotNil(t, cache)
 
-	want := "val"
-	got := cache.ctx.Value("test")
-	if want != got {
-		t.Errorf("Wanted context value %s; got %s", want, got)
-	}
-
-	want = "localhost:6379"
-	got = cache.rdb.Options().Addr
+	want := "localhost:6379"
+	got := cache.rdb.Options().Addr
 	if want != got {
 		t.Errorf("Wanted Address value %s; got %s", want, got)
 	}
