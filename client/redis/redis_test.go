@@ -2,12 +2,13 @@ package redis
 
 import (
 	"context"
+	"testing"
+
 	"github.com/alicebob/miniredis/v2"
 	"github.com/beatlabs/patron/trace"
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/mocktracer"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestSpan(t *testing.T) {

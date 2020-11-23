@@ -2,10 +2,11 @@ package redis
 
 import (
 	"context"
-	"github.com/alicebob/miniredis/v2"
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
+
+	"github.com/alicebob/miniredis/v2"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestNew(t *testing.T) {
